@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const BASE_URL='http://localhost:5000'
 
-const axiosWithAuth = () => {
+export const axiosWithAuth = () => {
     const token = localStorage.getItem('token')
     
     return axios.create({ 
@@ -24,13 +24,5 @@ export const login = (user) => {
 
 }
 
-export const getBubbles = () => { 
-    axiosWithAuth().get(`${BASE_URL}/api/colors`)
-    .then((response) => { 
-        console.log(response.data)
-    })
-    .catch((error) => { 
-        console.log("There was an error retreving your bubbles", error)
-    })
-}
+
 
