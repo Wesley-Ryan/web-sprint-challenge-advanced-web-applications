@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from 'react-hook-form';
-
+import { useHistory } from 'react-router-dom'
 import {login} from '../utils'
 
 const Login = () => {
@@ -8,9 +8,11 @@ const Login = () => {
     mode: 'onBlur', 
 
   });
+  const history =useHistory()
   const onSubmit = data => { 
     login(data)
     reset()
+    history.push('/bubbles')
   }
   
   console.log(errors);

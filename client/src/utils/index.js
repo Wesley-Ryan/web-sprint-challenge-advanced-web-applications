@@ -24,5 +24,26 @@ export const login = (user) => {
 
 }
 
+export const updateColor = (color) => { 
+    axiosWithAuth()
+    .put(`${BASE_URL}/api/colors/${color.id}`, color)
+    .then((response) => { 
+        console.log(response.data)
+    })
+    .catch((error) => { 
+        console.log("There was an error updating the color", error)
+    })
+}
 
+export const removeColor = (color) => { 
+    axiosWithAuth()
+    .delete(`${BASE_URL}/api/colors/${color.id}`, color)
+    .then((response) => { 
+        console.log(response.data)
+    })
+    .catch((error) => { 
+        console.log("There was an error removing the color", error)
+    })
+
+}
 

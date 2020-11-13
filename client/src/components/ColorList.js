@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import {updateColor, removeColor} from '../utils'
+
 const initialColor = {
   color: "",
   code: { hex: "" }
 };
 
-const ColorList = ({ colors, updateColors }) => {
+const ColorList = ({ colors, updateColors, getColors }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
@@ -14,17 +16,20 @@ const ColorList = ({ colors, updateColors }) => {
   const editColor = color => {
     setEditing(true);
     setColorToEdit(color);
+    
   };
 
   const saveEdit = e => {
     e.preventDefault();
-    // Make a put request to save your updated color
-    // think about where will you get the id from...
-    // where is is saved right now?
+      updateColor(colorToEdit)
+      setEditing(false)
+      getColors()
+      
   };
 
-  const deleteColor = color => {
-    // make a delete request to delete this color
+  const deleteColor = color => {  
+    removeColor(color)
+    getColors()
   };
 
   return (
