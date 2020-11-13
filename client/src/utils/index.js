@@ -12,6 +12,14 @@ export const axiosWithAuth = () => {
     })
 }
 
+export const fetchColors = () => {
+    return axiosWithAuth()
+       .get(`${BASE_URL}/api/colors`)
+       .then(res => {
+          return (res)
+       })
+ }
+
 export const login = (user) => { 
     axios.post(`${BASE_URL}/api/login`, user)
     .then((response) => { 
